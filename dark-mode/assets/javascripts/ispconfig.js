@@ -147,7 +147,7 @@ var ISPConfig = {
 		});
 		$('input[type="password"]').on('click focus', function() {
 			$(this).prop('readonly', false);
-			$(this).tooltip('destroy');
+			$(this).tooltip('dispose');
 		});
 
 		ISPConfig.callHook('onAfterContentLoad', {'url': url, 'data': data });
