@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+	<head>
+		<meta charset="utf-8" />
+
+		<title>{tmpl_var name="company_name"}{tmpl_var name="app_title"}</title>
+
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1" />
+		<meta name="description" lang="en" content="" />
+		<meta name="keywords" lang="en" content="" />
+		<meta name="robots" content="noindex, nofollow" />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/themes/{tmpl_var name='current_theme'}/assets/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/themes/{tmpl_var name='current_theme'}/assets/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/themes/{tmpl_var name='current_theme'}/assets/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="/themes/{tmpl_var name='current_theme'}/assets/favicon/site.webmanifest" />
+		<link rel="mask-icon" href="/themes/{tmpl_var name='current_theme'}/assets/favicon/safari-pinned-tab.svg" color="#cc151c" />
+		<link rel="shortcut icon" href="/themes/{tmpl_var name='current_theme'}/assets/favicon/favicon.ico" />
+		<meta name="msapplication-TileColor" content="#cc151c" />
+		<meta name="msapplication-config" content="/themes/{tmpl_var name='current_theme'}/assets/favicon/browserconfig.xml" />
+
+		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/bootstrap/5.3.1/bootstrap.min.css" />
+
+		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/font-awesome/6.4.2/all.min.css" />
+		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/font-awesome/6.4.2/brands.min.css" />
+		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/font-awesome/6.4.2/solid.min.css" />
+	</head>
+
+	<body>
+		<script type="text/javascript" src="/themes/{tmpl_var name='current_theme'}/assets/javascripts/jquery/3.7.1/jquery-3.7.1.min.js"></script>
+		<script src="/themes/{tmpl_var name='current_theme'}/assets/javascripts/bootstrap/5.3.1/bootstrap.bundle.min.js"></script>
+		<script src="/themes/{tmpl_var name='current_theme'}/assets/javascripts/ispconfig/ispconfig.js"></script>
+		<script src="js/scrigo.js.php"></script>
+		<script type="text/javascript" src="js/jquery.ispconfigsearch.js"></script>
+		<script type="text/javascript" src="js/jquery.tipsy.js"></script>
+		<tmpl_loop name="js_d_includes">
+			<script type="text/javascript" src="js/js.d/{tmpl_var name='file'}"></script>
+		</tmpl_loop>
+		<script>
+			<!--
+			//$('.ttip').tipsy({live: true, gravity: 'ne', html: true});
+
+			ISPConfig.tabChangeDiscard = '{tmpl_var name="tabchange_discard_enabled"}';
+			ISPConfig.tabChangeWarning = '{tmpl_var name="tabchange_warning_enabled"}';
+			ISPConfig.tabChangeWarningTxt = '{tmpl_var name="global_tabchange_warning_txt"}';
+			ISPConfig.tabChangeDiscardTxt = '{tmpl_var name="global_tabchange_discard_txt"}';
+
+			{tmpl_if name="use_loadindicator" value="y"}ISPConfig.setOption('useLoadIndicator', true);{/tmpl_if}
+			{tmpl_if name="use_combobox" value="y"}ISPConfig.setOption('useComboBox', true);{/tmpl_if}
+
+			$(document).ready(function() {
+			$('#globalsearch').ispconfigSearch({
+			dataSrc: '/dashboard/ajax_get_json.php?type=globalsearch',
+			resultsLimit: '$ {tmpl_var name="globalsearch_resultslimit_of_txt"} % {tmpl_var name="globalsearch_resultslimit_results_txt"}',
+			noResultsText: '{tmpl_var name="globalsearch_noresults_text_txt"}',
+			noResultsLimit: '{tmpl_var name="globalsearch_noresults_limit_txt"}',
+			searchFieldWatermark: '{tmpl_var name="globalsearch_searchfield_watermark_txt"}',
+			resultBoxPosition: ''
+			});
+
+			ISPConfig.loadInitContent();
+
+			});
+			//-->
+		</script>
+	</body>
+</html>
