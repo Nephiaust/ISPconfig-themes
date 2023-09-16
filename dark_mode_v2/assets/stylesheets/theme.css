@@ -1,0 +1,7 @@
+.nav-tabs .nav-link.active {
+    background-color: #c70f19;
+}
+
+.nav-tabs .nav-link {
+    color: #adadad;
+}

@@ -24,18 +24,155 @@
 		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/font-awesome/6.4.2/all.min.css" />
 		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/font-awesome/6.4.2/brands.min.css" />
 		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/font-awesome/6.4.2/solid.min.css" />
+
+		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/theme.css" />
+
+		<link rel="stylesheet" href="/themes/{tmpl_var name='current_theme'}/assets/stylesheets/ispconfig/fonts.css" />
 	</head>
 
-	<body>
+	<body class="container d-flex text-center text-bg-dark flex-grow-1">
+		<div class="p-3 mx-auto container-fluid">
+			<header class="mb-auto align-self-center text-bg-dark container-fluid">
+				<div class="row">
+					<div class="col-lg-auto justify-content-start">
+						<!-- logo -->
+						<a href="#" class="text-decoration-none"><img id="logo" src='{tmpl_var name="base64_logo_txt"}' /></a>
+					</div>
+					<div class="col-md-auto justify-content-end offset-md-4">
+						{tmpl_if name='datalog_changes_count' op='>' value='0'}
+						<button type="button" class="btn btn-outline-warning text-end" data-bs-toggle="modal" data-bs-target="#pendingChangesModal">{tmpl_var name="datalog_changes_count"}</button>
+						<!-- Modal for Pending Changes -->
+						<div class="modal fade" id="pendingChangesModal" tabindex="-1" aria-labelledby="pendingChangesModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="pendingChangesModallLabel">{tmpl_var name="datalog_changes_txt"}</h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<ul>
+											<tmpl_loop name="datalog_changes">
+												<li><strong>{tmpl_var name="text"}:</strong> {tmpl_var name="count"}</li>
+											</tmpl_loop>
+										</ul>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{tmpl_var name="datalog_changes_close_txt"}</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						{/tmpl_if}
+					</div>
+					<div class="col-md-auto justify-content-end">
+						<!-- search field -->
+						<form action="#" method="get" id="searchform" role="form">
+							<div class="input-group">
+								<input id="globalsearch" type="text" class="form-control" placeholder='{tmpl_var name="globalsearch_searchfield_watermark_txt"}' aria-label='{tmpl_var name="globalsearch_searchfield_watermark_txt"}' aria-describedby="search-addon" />
+								<span class="input-group-btn" id="search-addon">
+									<button class="btn btn-default" title='{tmpl_var name="globalsearch_searchfield_watermark_txt"}'>
+										<i class="fa-solid fa-magnifying-glass"></i>
+									</button>
+								</span>
+							</div>
+						</form>
+					</div>
+					<!-- logout button -->
+					{tmpl_if name="cpuser"}
+					<div class="col-md-auto justify-content-end">
+						<a role="button" id="logout-button" class="btn btn-sm btn-outline-danger text-uppercase" href="login/logout.php">{tmpl_var name="logout_txt"} {tmpl_var name="cpuser"}</a>
+					</div>
+					{tmpl_if name='usertype' op='==' value='normaluser'} {/tmpl_if} {/tmpl_if}
+				</div>
+				<div class="row">
+					{tmpl_if name='logged_in' value='y'}
+					<div id="topnav-container">
+						<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" aria-label="Main Menu">
+							<div class="container-fluid">
+								<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								</button>
+								<div class="collapse navbar-collapse" id="offcanvasNavbar2">
+									<ul class="nav nav-tabs">
+										<li class="nav-item">
+											<a class="nav-link active" aria-current="page" href="#">Home</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link disabled" aria-disabled="true" href="#">Blog</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link disabled" aria-disabled="true" href="#">Resume</a>
+										</li>
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Creative </a>
+											<ul class="dropdown-menu">
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="/creative/ai-art.html">AI Art</a>
+												</li>
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Another action</a>
+												</li>
+												<li><hr class="dropdown-divider" /></li>
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Something else here</a>
+												</li>
+											</ul>
+										</li>
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Programming </a>
+											<ul class="dropdown-menu">
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Action</a>
+												</li>
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Another action</a>
+												</li>
+												<li><hr class="dropdown-divider" /></li>
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Something else here</a>
+												</li>
+											</ul>
+										</li>
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Electronics </a>
+											<ul class="dropdown-menu">
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Action</a>
+												</li>
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Another action</a>
+												</li>
+												<li><hr class="dropdown-divider" /></li>
+												<li>
+													<a class="dropdown-item disabled" aria-disabled="true" href="#">Something else here</a>
+												</li>
+											</ul>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" aria-disabled="false" href="/contact.html">Contact Me</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</nav>
+					</div>
+					{/tmpl_if}
+				</div>
+			</header>
+			<main class="px-3"></main>
+			<footer class="mt-auto text-white-50 position-absolute bottom-0 start-50 translate-middle-x">
+				<p>Powered by <a href='{tmpl_var name="app_link"}' target="_blank">{tmpl_var name="app_title"}</a></p>
+			</footer>
+		</div>
 		<script type="text/javascript" src="/themes/{tmpl_var name='current_theme'}/assets/javascripts/jquery/3.7.1/jquery-3.7.1.min.js"></script>
 		<script src="/themes/{tmpl_var name='current_theme'}/assets/javascripts/bootstrap/5.3.1/bootstrap.bundle.min.js"></script>
 		<script src="/themes/{tmpl_var name='current_theme'}/assets/javascripts/ispconfig/ispconfig.js"></script>
 		<script src="js/scrigo.js.php"></script>
 		<script type="text/javascript" src="js/jquery.ispconfigsearch.js"></script>
 		<script type="text/javascript" src="js/jquery.tipsy.js"></script>
-		<tmpl_loop name="js_d_includes">
-			<script type="text/javascript" src="js/js.d/{tmpl_var name='file'}"></script>
-		</tmpl_loop>
+		{tmpl_loop name="js_d_includes">
+		<script type="text/javascript" src="js/js.d/{tmpl_var name='file'}"></script>
+		{/tmpl_loop}
 		<script>
 			<!--
 			//$('.ttip').tipsy({live: true, gravity: 'ne', html: true});

@@ -1,9 +1,19 @@
 	<!-- main navigation -->
-	<nav id='main-navigation' class='btn-group btn-group-justified'>
-    {tmpl_loop name="nav_top"}
-		<a href="#" {tmpl_if name="active"} class="btn btn-default active" {tmpl_else} class="btn btn-default" data-capp="{tmpl_var name='module'}" {/tmpl_if} data-icon-class="icon-{tmpl_var name='module'}>
-			<div class="icon icon-{tmpl_var name='module'}"></div>
-			<div class="title">{tmpl_var name="title"}</div>
-		</a>
-    </tmpl_loop>
+	<nav id='main-navigation' class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark" aria-label="Main Menu">
+		<div class="container-fluid">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="offcanvasNavbar2">
+				<ul class="nav nav-tabs">
+					{tmpl_loop name="nav_top"}
+					<li class="nav-item">
+						<a {tmpl_if name="active"} class="nav-link active" aria-disabled="false" aria-current='{tmpl_var name="title"}' {tmpl_else} class="nav-link" aria-disabled="false" {/tmpl_if} aria-current="page" href="#" data-icon-class="icon-{tmpl_var name='module'}">
+							<i class='icon icon-{tmpl_var name="module"} fa-2xl'></i>{tmpl_var name="title"}
+						</a>
+					</li>
+					{/tmpl_loop}
+				</ul>
+			</div>
+		</div>
 	</nav>
