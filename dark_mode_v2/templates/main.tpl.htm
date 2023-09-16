@@ -159,7 +159,13 @@
 					{/tmpl_if}
 				</div>
 			</header>
-			<main class="px-3"></main>
+			<main class="px-3">
+				<!-- news sidebar -->
+				{tmpl_if name='logged_in' value='y'}
+					<div id='sidebar' class='news-sidebar left text-start'>
+					</div>
+				{/tmpl_if}
+			</main>
 			<footer class="mt-auto text-white-50 position-absolute bottom-0 start-50 translate-middle-x">
 				<p>Powered by <a href='{tmpl_var name="app_link"}' target="_blank">{tmpl_var name="app_title"}</a></p>
 			</footer>
